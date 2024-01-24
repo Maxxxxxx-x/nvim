@@ -14,25 +14,20 @@ return {
     },
     config = function()
         local cmp = require("cmp")
+        local lspconfig = require("lspconfig")
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "clangd",
-                "clang-format",
-                "cmake",
-                "lua_ls",
                 "rust_analyzer",
                 "tsserver",
-                "stylua",
             },
             handlers = {
                 function(server_name)
-                    require("lspconfig")[server_name].setup({})
+                    lspconfig[server_name].setup({})
                 end,
 
                 ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup({
                         settings = {
                             Lua = {
@@ -42,8 +37,9 @@ return {
                             }
                         }
                     })
-                end
-            }
+                end,
+
+           }
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
