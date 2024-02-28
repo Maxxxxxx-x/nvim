@@ -44,9 +44,6 @@ return {
                 dark_variant = "main",
                 dim_inactive_windows = false,
             })
-
-            ColorMyPencils()
-            vim.cmd("colorscheme rose-pine")
         end
     },
     {
