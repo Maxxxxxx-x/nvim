@@ -1,9 +1,24 @@
-function ColorMyPencils(color)
-    color = color or "rose-pine"
-    vim.cmd.colorscheme(color)
-    
+function GetColors()
+    local colors = {
+        "tokyonight",
+        "rose-pine",
+        "rose-pine-main",
+        "rose-pine-moon",
+        "rose-pine-dawn",
+        "gruvbox"
+    }
+    print(table.concat(colors, "\n"))
+end
+
+function ClearBg()
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFLoat", { bg = "none" })
+end
+
+function ChangeColors(color)
+    color = color or "rose-pine"
+    vim.cmd(string.format("colorscheme %s", color))
+    ClearBg()
 end
 
 return {
@@ -17,7 +32,7 @@ return {
             }
         },
         config = function()
-            vim.cmd("colorscheme tokyonight")
+            -- vim.cmd("colorscheme tokyonight")
         end
     },
     {
@@ -29,8 +44,13 @@ return {
                 dark_variant = "main",
                 dim_inactive_windows = false,
             })
-            -- ColorMyPencils()
-            -- vim.cmd("colorscheme rose-pine")
+            --vim.cmd("colorscheme rose-pine")
         end
-    }
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        config = function()
+            ChangeColors("gruvbox")
+        end,
+    },
 }
