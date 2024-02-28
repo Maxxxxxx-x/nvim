@@ -17,7 +17,7 @@ return {
             }
         },
         config = function()
-            vim.cmd("colorscheme tokyonight")
+            -- vim.cmd("colorscheme tokyonight")
         end
     },
     {
@@ -29,8 +29,8 @@ return {
                 dark_variant = "main",
                 dim_inactive_windows = false,
             })
-            -- ColorMyPencils()
-            -- vim.cmd("colorscheme rose-pine")
+            ColorMyPencils()
+            vim.cmd("colorscheme rose-pine")
         end
     }
 }
