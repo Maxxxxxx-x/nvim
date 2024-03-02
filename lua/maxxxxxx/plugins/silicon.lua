@@ -4,10 +4,10 @@ return {
     cmd = "Silicon",
     config = function()
         require("silicon").setup({
-            font = "CascadiaCode=32",
+            font = "Arial=32",
             tab_width = 4,
             output = function()
-                local path = "/mnt/c/Users/user/Pictures/silicon-nvim/"
+                local path = "/Users/maxx/Downloads/silicon-screenshots/"
                 local file_name = vim.fn.expand("%:t")
                 local date_string= os.date("!%Y-%m-%dT%H-%M-%S")
                 return string.format("%s%s_%s.png", path, date_string, file_name)
