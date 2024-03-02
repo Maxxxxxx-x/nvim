@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "lopi-py/luau-lsp.nvim",
 
     ft = { "lua", "luau" },
