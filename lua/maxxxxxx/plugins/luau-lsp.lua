@@ -1,8 +1,8 @@
 return {
+    enabled = true,
     "lopi-py/luau-lsp.nvim",
 
-    ft = { "lua", "luau" },
-
+    ft = { "lua" },
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
