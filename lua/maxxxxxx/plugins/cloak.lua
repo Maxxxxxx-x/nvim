@@ -16,5 +16,6 @@ return {
                 },
             },
         })
+        vim.keymap.set("n", "<leader>ct", vim.cmd.CloakToggle)
     end
 }
