@@ -12,5 +12,10 @@ return {
         vim.keymap.set("n", "<leader>grm", function()
             return vim.cmd("Git rm %")
         end)
+        vim.keymap.set("n", "<leader>gps", function()
+            local remote = vim.f.input("Remote: ")
+            local branch = vim.fn.input("Branch: ")
+            return vim.cmd(string.format("Git push %s %s", remote, branch))
+        end)
     end
 }
