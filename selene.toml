@@ -1,0 +1,7 @@
+std="lua51+vim"
+
+[rules]
+global_usage = "allow"
+unused_veriable = "allow"
+multiple_statement = "allow"
+mixed_table = "allow"
