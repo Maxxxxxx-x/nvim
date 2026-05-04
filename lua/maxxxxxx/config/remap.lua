@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("v", "<C-s>", ":Silicon<cr>")
 
 vim.keymap.set("n", "<leader>u", function()
-    require("fzf-lua").undo()
+    require("fzf-lua").undotree()
 end)
 
 -- trim ^M
