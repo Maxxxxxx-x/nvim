@@ -4,7 +4,6 @@ end
 
 local autocmd = vim.api.nvim_create_autocmd
 
-
 local settings_group = augroup("GeneralSettings")
 
 autocmd({ "TextYankPost" }, {
@@ -12,10 +11,10 @@ autocmd({ "TextYankPost" }, {
     pattern = "*",
     callback = function()
         vim.highlight.on_yank({
-	    higroup = "IncSearch",
-	    timeout = 40,
-	})
-    end
+            higroup = "IncSearch",
+            timeout = 40,
+        })
+    end,
 })
 
 autocmd({ "BufWritePre" }, {
@@ -28,14 +27,14 @@ autocmd({ "ColorScheme" }, {
     group = augroup("RemoveBackground"),
     pattern = "*",
     callback = function()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    end
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end,
 })
 
-autocmd({ "fileType" }, {
+autocmd({ "FileType" }, {
     pattern = "templ",
     callback = function()
         vim.treesitter.start()
-    end
+    end,
 })
