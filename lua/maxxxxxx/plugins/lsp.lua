@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    cmd = { "LspInfo", "LspInstall", "LspStart" },
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "saghen/blink.cmp",
