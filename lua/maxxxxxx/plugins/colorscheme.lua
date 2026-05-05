@@ -21,12 +21,40 @@ local colorschemes = {
             -- ChangeColors("tokyonight-moon")
         end,
     },
+
     {
         "shaunsingh/nord.nvim",
         config = function()
             -- ChangeColors("nord")
         end,
     },
+
+    {
+        "rebelot/kanagawa.nvim",
+        priority = 1000, -- Load this first
+        config = function()
+            require("kanagawa").setup({
+                compile = false, -- enable compiling the colorscheme
+                undercurl = true, -- enable undercurls
+                commentStyle = { italic = true },
+                functionStyle = { bold = true },
+                keywordStyle = { italic = true },
+                statementStyle = { bold = true },
+                typeStyle = {},
+                transparent = false, -- set to true for transparent background
+                dimInactive = false, -- dim inactive windows
+                colors = {}, -- override colors
+                theme = "wave", -- load "wave" theme
+                background = { -- map dark/light to kanagawa-wave/-lotus
+                    dark = "wave",
+                    light = "lotus",
+                },
+            })
+
+            ChangeColors("kanagawa")
+        end,
+    },
+
     {
         "mellow-theme/mellow.nvim",
         config = function()
@@ -42,7 +70,7 @@ local colorschemes = {
                 dark_variant = "main",
                 dim_inactive_windows = false,
             })
-            ChangeColors("rose-pine-moon")
+            -- ChangeColors("rose-pine-moon")
         end,
     },
     {
