@@ -1,7 +1,14 @@
 return {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        "saghen/blink.lib",
+    },
     version = "*",
+
+    build = function()
+        require("blink.cmp").build():wait(60000)
+    end,
 
     opts = {
         keymap = {
@@ -9,10 +16,6 @@ return {
 
             ["<C-l>"] = { "snippet_forward", "fallback" },
             ["<C-h>"] = { "snippet_backward", "fallback" },
-        },
-        appearance = {
-            use_nvim_get_hl = true,
-            nerd_font_variants = "mono",
         },
 
         snippets = { preset = "default" },
@@ -23,6 +26,8 @@ return {
                 dadbod = { name = "Dadbod", module = "vim_dadbod_cmpletion.blink" },
             },
         },
+
+        fuzzy = { implementation = "rust" },
 
         completion = {
             menu = {
