@@ -1,34 +1,42 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    version = false,
     build = ":TSUpdate",
-    branch = "main",
-    config = function()
-        require("nvim-treesitter.config").setup({
-            ensure_installed = {
-                "vimdoc",
-                "javascript",
-                "typescript",
-                "c",
-                "lua",
-                "rust",
-                "jsdoc",
-                "bash",
-                "go",
-                "python",
-                "svelte",
-            },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSUpdate", "TSInstall" },
+    opts = {
+        highlight = { enable = true, additional_vim_regex_highlighting = false },
+        indent = { enable = true },
+        ensure_installed = {
+            "bash",
+            "c",
+            "diff",
+            "html",
+            "javascript",
+            "jsdoc",
+            "json",
+            "lua",
+            "luadoc",
+            "markdown",
+            "markdown_inline",
+            "python",
+            "query",
+            "regex",
+            "svelte",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
+        },
+    },
+    config = function(_, opts)
+        require("nvim-treesitter").setup(opts)
 
-            sync_install = false,
-            auto_install = true,
-            indent = {
-                enable = true,
-            },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "markdown" },
-            },
+        vim.api.nvim_create_autocmd({ "FileType" }, {
+            pattern = "svelte",
+            callback = function()
+                vim.treesitter.start()
+            end,
         })
-
-        require("nvim-treesitter").install({ "templ" })
     end,
 }
