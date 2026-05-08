@@ -16,6 +16,7 @@ return {
             "jsdoc",
             "json",
             "lua",
+            "luau",
             "luadoc",
             "markdown",
             "markdown_inline",
