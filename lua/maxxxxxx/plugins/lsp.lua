@@ -1,28 +1,13 @@
 return {
     "neovim/nvim-lspconfig",
-    cmd = { "LspInfo", "LspInstall", "LspStart" },
+
+    event = { "BufReadPre", "BufNewFile" },
+
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "saghen/blink.cmp",
         "j-hui/fidget.nvim",
     },
-
-    opts = function(_, opts)
-        local lsp = extra.nameor("vtsls")
-        local servers = { "ts_ls", "tsserver", "vtsls", "tsgo", "svelte", lsp }
-        for _, server in ipairs(servers) do
-            opts.servers[server] = opts.servers[server] or {}
-            opts.servers[server].enaled = server == lsp
-        end
-
-        LazyVim.extend(opts.servers.utils, "settings.vtsls.tsserver.globalPlugins", {
-            {
-                name = "typescript-svelte-plugin",
-                location = LazyVim.get_pkg_path("svelte-language-server", "/node_modules/typescript-svelte-plugin"),
-                enableForWorkspaceTypeScriptVersions = true,
-            },
-        })
-    end,
 
     config = function()
         local lspconfig = require("lspconfig")
