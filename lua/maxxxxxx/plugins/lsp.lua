@@ -70,6 +70,11 @@ return {
                 "tailwindcss",
                 "sqls",
             },
+
+            automatic_enablel = {
+                exclude = { "luau_lsp" },
+            },
+
             handlers = {
                 function(server_name)
                     lspconfig[server_name].setup({
