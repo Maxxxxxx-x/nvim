@@ -4,11 +4,10 @@ return {
         "rafamadriz/friendly-snippets",
         "saghen/blink.lib",
     },
+
     version = "*",
 
-    build = function()
-        require("blink.cmp").build():wait(60000)
-    end,
+    build = "cargo build --release",
 
     opts = {
         keymap = {
