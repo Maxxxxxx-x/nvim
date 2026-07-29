@@ -4,7 +4,6 @@ return {
     cmd = "Silicon",
     config = function()
         require("nvim-silicon").setup({
-            font = "CascadiaCode=26",
             tab_width = 4,
             language = function()
                 local filetype = vim.bo.filetype
