@@ -1,9 +1,3 @@
-local function rojo_project()
-    return vim.fs.root(0, function(name)
-        return string.match(name, ".+%.project%.json$")
-    end)
-end
-
 return {
     "lopi-py/luau-lsp.nvim",
 
@@ -13,9 +7,21 @@ return {
         "nvim-lua/plenary.nvim",
     },
 
+    init = function()
+        vim.lsp.config("*", {
+            capabilities = {
+                workspace = {
+                    didChangeWatchedFiles = {
+                        dynamicRegistration = true,
+                    },
+                },
+            },
+        })
+    end,
+
     opts = {
         platform = {
-            type = rojo_project() and "roblox" or "standard",
+            type = "roblox",
         },
 
         types = {
@@ -26,7 +32,7 @@ return {
             enabled = true,
             autogenerate = true,
             rojo_project_file = "default.project.json",
-            sourcemap_file = "sourcemap.json"
+            sourcemap_file = "sourcemap.json",
         },
 
         plugin = {
@@ -39,16 +45,4 @@ return {
             sync = true,
         },
     },
-
-    config = function()
-        if rojo_project() then
-            vim.filetype.add({
-                extension = {
-                    lua = function(path)
-                        return string.match(path, "%.nvim%.lua$") and "lua" or "luau"
-                    end
-                }
-            })
-        end
-    end
 }
