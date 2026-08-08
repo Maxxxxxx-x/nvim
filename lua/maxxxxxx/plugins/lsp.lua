@@ -71,7 +71,7 @@ return {
                 "sqls",
             },
 
-            automatic_enablel = {
+            automatic_enable = {
                 exclude = { "luau_lsp" },
             },
 
