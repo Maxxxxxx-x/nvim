@@ -11,7 +11,7 @@ jobs:
       - name: Checkout parent directory
         uses: actions/checkout@v4
         with:
-          repository: verypro-wtf/Hermod
+          repository: Maxxxxxx-x/dotfiles
           token: ${{ secrets.DOTFILES_REPO_TOKEN }}
           submodules: true
           ref: main
