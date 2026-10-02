@@ -8,34 +8,36 @@ jobs:
   update_repo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout parent directory
+      - name: Checkout dotfiles repository
         uses: actions/checkout@v4
         with:
           repository: Maxxxxxx-x/dotfiles
           token: ${{ secrets.DOTFILES_REPO_TOKEN }}
           submodules: true
           ref: master
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: Configure git
+      - name: Configure Git
         run: |
-          git config user.name "gh-actions[bot]"
-          git config user.email "gh-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Update submodule
+      - name: Update Neovim submodule
         id: update
         run: |
+          # Fetch and checkout the latest commit of the submodule
           git submodule update --init --remote --force nvim
 
-          if git diff --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes needed"
+          # Check for staged or unstaged changes in the submodule reference
+          if git diff --quiet HEAD -- nvim; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in nvim submodule."
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed=true" >> "$GITHUB_OUTPUT"
             git add nvim
-            LEFTHOOK=0 git commit --no-verify -m "chore: bumped nvim submodule to ${{ github.sha }}"
+            LEFTHOOK=0 git commit --no-verify -m "chore: bump submodule to Maxxxxxx-x/nvim@${{ github.sha }}"
           fi
 
       - name: Push changes
         if: steps.update.outputs.changed == 'true'
-        run: git push origin main
+        run: git push origin HEAD:master
