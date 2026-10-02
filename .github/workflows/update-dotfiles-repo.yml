@@ -25,15 +25,15 @@ jobs:
       - name: Update submodule
         id: update
         run: |
-          git submodule update --init --remote --force worker
+          git submodule update --init --remote --force nvim
 
           if git diff --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No changes needed"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            git add worker
-            LEFTHOOK=0 git commit --no-verify -m "chore: bumped worker submodule to ${{ github.sha }}"
+            git add nvim
+            LEFTHOOK=0 git commit --no-verify -m "chore: bumped nvim submodule to ${{ github.sha }}"
           fi
 
       - name: Push changes
