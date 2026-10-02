@@ -19,7 +19,7 @@ return {
             wslclipboardcopy = "keep",
             output = function()
                 local path = "/mnt/c/Users/maxx/Pictures/silicon-nvim/"
-                local date_string = os.date("!%Y-%m-%dT%H-%M-%S")
+                local date_string = os.date("!%Y-%m-%dT%H-%M-%SZ")
                 print(string.format("%s%s.png", path, date_string))
                 return string.format("%s%s.png", path, date_string)
             end,
