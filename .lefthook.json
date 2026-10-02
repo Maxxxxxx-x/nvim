@@ -1,0 +1,14 @@
+{
+  "pre-commit": {
+    "commands": {
+      "stylua": {
+        "glob": "*.lua",
+        "run": "stylua {staged_files}"
+      },
+      "selene": {
+        "glob": "*.lua",
+        "run": "selene {staged_files}"
+      }
+    }
+  }
+}
