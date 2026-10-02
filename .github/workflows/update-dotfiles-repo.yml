@@ -14,7 +14,7 @@ jobs:
           repository: Maxxxxxx-x/dotfiles
           token: ${{ secrets.DOTFILES_REPO_TOKEN }}
           submodules: true
-          ref: main
+          ref: master
           fetch-depth: 0
 
       - name: Configure git
