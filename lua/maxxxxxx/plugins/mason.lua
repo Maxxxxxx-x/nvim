@@ -6,7 +6,7 @@ return {
                 package_installed = "✓",
                 package_uninstalled = "✗",
                 pacakge_pending = "➜",
-            }
-        }
-    }
+            },
+        },
+    },
 }

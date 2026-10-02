@@ -21,7 +21,7 @@ return {
             grep = {
                 -- Improves the grep experience
                 rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
-            }
+            },
         })
 
         -- Keybindings
@@ -36,6 +36,5 @@ return {
         vim.keymap.set("n", "<leader>ps", fzf.live_grep, { desc = "Fzf Live Grep" })
 
         vim.keymap.set("n", "<leader>vh", fzf.help_tags, { desc = "Fzf Help Tags" })
-    end
+    end,
 }
-
